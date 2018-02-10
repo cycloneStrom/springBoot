@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.poem</groupId>
+    <artifactId>blog-demo</artifactId>
+    <!--版本号  <主版本>.<此版本>.<增量版本> - <里程碑版本>-->
+    <version>v1.1.1-beta-1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <!--项目名称-->
+    <name>my-project</name>
+    <!--项目启动依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.2.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <!--项目属性 启动配置 编译库 -->
+    <properties>
+        <!-- 主要依赖库的版本定义 -->
+        <start-class>org.poem.SpringBootTestApplication</start-class>
+        <spring.version>4.2.8.RELEASE</spring.version>
+        <aspectj.version>1.8.7</aspectj.version>
+        <spring-data-redis.version>1.5.2.RELEASE</spring-data-redis.version>
+        <jedis.version>2.7.3</jedis.version>
+        <!-- Plugin的属性定义 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 文件拷贝时的编码 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 编译时的编码 -->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <jetty.version>9.2.7.v20150116</jetty.version>
+        <tomcat.version>8.0.29</tomcat.version>
+        <java.version>1.8</java.version>
+        <joda-time-hibernate.version>1.3</joda-time-hibernate.version>
+        <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+        <jdbc.driver.version>5.1.30</jdbc.driver.version>
+        <spring-security.version>4.0.1.RELEASE</spring-security.version>
+        <usertype-core.version>3.2.0.GA</usertype-core.version>
+        <HikariCP.version>2.4.1</HikariCP.version>
+        <metrics-spark-reporter.version>1.2</metrics-spark-reporter.version>
+        <metrics-spring.version>3.0.4</metrics-spring.version>
+        <dropwizard-metrics.version>3.1.2</dropwizard-metrics.version>
+        <jackson.version>2.4.6</jackson.version>
+        <springside.version>4.1.0.GA</springside.version>
+        <maven.cargo.tomcat.address>http://192.168.6.131:8080</maven.cargo.tomcat.address>
+        <maven.flayway.version>3.1</maven.flayway.version>
+        <junit.version>4.12</junit.version>
+    </properties>
+    <!--配置SpringBootApplication所依赖的各种包-->
+    <dependencies>
+        <!--tomcat启动-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+            <artifactId>spring-boot-starter-websocket</artifactId>
+            <!--<scope>provided</scope> 添加上启动不了-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.websocket</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <!--sql-->
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.5.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- SPRINGSIDE -->
+        <dependency>
+            <groupId>org.springside</groupId>
+            <artifactId>springside-core</artifactId>
+            <version>${springside.version}</version>
+        </dependency>
+        <!--Spring test-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springside</groupId>
+            <artifactId>springside-test</artifactId>
+            <version>${springside.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+        <!-- spring aop -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--登录配置-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>5.02</version>
+        </dependency>
+
+        <!--Spring 权限管理-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring-data-redis.version}</version>
+        </dependency>
+
+        <!--redis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>${spring.version}</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>tools</artifactId>
+                    <groupId>com.sun</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-annotation</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-graphite</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-healthchecks</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-json</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-jvm</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-servlet</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-servlets</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>metrics-healthchecks</artifactId>
+                    <groupId>io.dropwizard.metrics</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate4</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ryantenney.metrics</groupId>
+            <artifactId>metrics-spring</artifactId>
+            <version>${metrics-spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-annotation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-healthchecks</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>fr.ippon.spark.metrics</groupId>
+            <artifactId>metrics-spark-reporter</artifactId>
+            <version>${metrics-spark-reporter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time-hibernate</artifactId>
+            <version>${joda-time-hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>${usertype-core.version}</version>
+        </dependency>
+
+        <!--websoket to jetty-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>8.0.28</version>
+        </dependency>
+
+        <!--flyway配置-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${maven.flayway.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 项目监理打包管理  各种插件 绑定到maven的各个生命周期的阶段上-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.3.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
+                    <arguments>
+                        <argument>--spring.profiles.active=dev</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <!-- maven-antrun-plugin:run于validate阶段绑定，从而构建一个id为ant-validate的任务 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.3</version>
+                <executions>
+                    <execution>
+                        <id>aut-validate</id>
+                        <phase>validate</phase><!--绑定到default声明周期的validate阶段-->
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <!--特定任务的配置-->
+                        <configuration>
+                            <tasks>
+                                <echo>I am bound to Validate phase.</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ant-verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>I'm to verify phase.</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Sonar 插件 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <!--maven jetty插件-->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.16.v20140903</version>
+                <configuration>
+                    <stopKey>none</stopKey>
+                    <stopPort>8089</stopPort>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+
+
+            <!--资源目录resources-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>ISO-8859-1</encoding>
+                </configuration>
+            </plugin>
+
+            <!--maven 测试插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <!--
+                    maven 测试插件  跳过测试
+                    如果需要零时性的跳过测试 可以在mvn命令加上-Dmaven.test.skip=true-->
+                    <skipTests>false</skipTests>
+                    <includes>
+                        <!--自动测试所包含的内容  其中**表示任意路径，一个*表示人一多个字符-->
+                        <include>**/*TestCase.java</include>
+                    </includes>
+                    <excludes>
+                        <!--自动测试所排除的内容  其中**表示任意路径，一个*表示人一多个字符-->
+                        <exclude>**/*Test.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- install插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+            <!-- resources插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--cargo 自动部署 远程tomcat-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>${maven.cargo.tomcat.address}/manager/text</url>
+                    <server>tomcat7x</server>
+                    <username>admin</username>
+                    <password>123456</password>
+                    <path>/${project.artifactId}</path>
+                </configuration>
+            </plugin>
+
+            <!--             cargo 自动部署
+                需要完成对tomcat用户角色权限的配置 conf/tomcat-user.xml
+                <role rolename="manager-gui"/>
+                <role rolename="manager-script"/>
+                <role rolename="manager-jmx"/>
+                <role rolename="manager-status"/>
+                <role rolename="admin-gui"/>
+                <user username="admin" password="123456" roles="manager-gui,manager-script,manager-jmx,manager-status,admin-gui"/>
+            -->
+            <!--cargo 自动部署-->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.6.1</version>
+                <configuration>
+                    <!--跳过自动部署  Spring boot启动报错 配置文件保留-->
+                    <skip>true</skip>
+                    <container>
+                        <containerId>tomcat7x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type>
+                        <properties>
+                            <!--远程地址-->
+                            <cargo.remote.uri>${maven.cargo.tomcat.address}/manager/text</cargo.remote.uri>
+                            <!--tomcat管理员账号和密码  自己设定-->
+                            <cargo.remote.username>admin</cargo.remote.username>
+                            <cargo.remote.password>123456</cargo.remote.password>
+                        </properties>
+                    </configuration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify-deployer</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deployer-redeploy</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>clean-deployer</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>deployer-undeploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--FlyWay插件-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${maven.flayway.version}</version>
+            </plugin>
+
+            <!--2017年2月7日15:30:41  添加 maven 压缩js和css-->
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <executions>
+                    <execution>
+                        <!-- 在真正的打包之前，执行一些准备打包压缩操作的操作  -->
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <!--maven生命周期-->
+                            <goal>compress</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip><!-- 2017年2月7日15:30:41  注释 不使用资源压缩-->
+                    <!-- 读取js,css文件采用UTF-8编码 -->
+                    <encoding>UTF-8</encoding>
+                    <!-- 不显示js可能的错误 -->
+                    <jswarn>false</jswarn>
+                    <!-- 若存在已压缩的文件，会先对比源文件是否有改动  有改动便压缩，无改动就不压缩 -->
+                    <force>false</force>
+                    <!-- 在指定的列号后插入新行 -->
+                    <linebreakpos>-1</linebreakpos>
+                    <!--使用gzip压缩-->
+                    <gzip>false</gzip>
+                    <!--保持必要的分号-->
+                    <preserveAllSemiColons>false</preserveAllSemiColons>
+                    <!-- 压缩之前先执行聚合文件操作 -->
+                    <preProcessAggregates>true</preProcessAggregates>
+                    <!-- 压缩后保存文件后缀 无后缀 -->
+                    <nosuffix>true</nosuffix>
+                    <!-- 源目录，即需压缩的根目录 -->
+                    <sourceDirectory>${basedir}/src/main/webapp/</sourceDirectory>
+                    <!-- 压缩的文件 工程里面所有的 js css 后缀的都会压缩 -->
+                    <includes>
+                        <include>**/*.js</include>
+                        <include>**/*.css</include>
+                    </includes>
+                    <!-- 不需要压缩的文件 -->
+                    <excludes>
+                        <exclude>**/bower_components/**</exclude>
+                        <exclude>**/static/style/**</exclude>
+                        <exclude>**/test_components/**</exclude>
+                        <exclude>**/test_pages/**</exclude>
+                        <exclude>**/*.min.js</exclude>
+                        <exclude>**/*.min.css</exclude>
+                    </excludes>
+                    <failOnWarning>false</failOnWarning>
+                </configuration>
+            </plugin>
+
+
+            <!-- 当压缩没有填写输出目录 或者 输出目录和压缩目录是同一路径时 一定要配合下面的使用  -->
+            <!-- war打包插件, 设定war包名称不带版本号 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <resourceEncoding>UTF-8</resourceEncoding>
+                    <warName>${project.artifactId}</warName>
+                    <warSourceDirectory>${basedir}/src/main/webapp/</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- log configuration -->
+                <logback.loglevel>DEBUG</logback.loglevel>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </dependency>
+            </dependencies>
+
+            <!-- 2017年2月7日15:44:38  注释yeoman grunt 插件 -->
+            <!--<build>-->
+                <!--<plugins>-->
+                    <!--<plugin>-->
+                        <!--<groupId>com.github.trecloux</groupId>-->
+                        <!--<artifactId>yeoman-maven-plugin</artifactId>-->
+                        <!--<version>0.4</version>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>run-grunt</id>-->
+                                <!--<phase>generate-resources</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>build</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<skipTests>true</skipTests>-->
+                                    <!--<buildTool>grunt</buildTool>-->
+                                    <!--<buildArgs>compass:server &#45;&#45;force</buildArgs>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                        <!--<configuration>-->
+                            <!--<yeomanProjectDirectory>${project.basedir}</yeomanProjectDirectory>-->
+                        <!--</configuration>-->
+                    <!--</plugin>-->
+                <!--</plugins>-->
+            <!--</build>-->
+        </profile>
+        <profile>
+            <id>fast</id>
+            <properties>
+                <!-- log configuration -->
+                <logback.loglevel>DEBUG</logback.loglevel>
+            </properties>
+            <!--<dependencies>-->
+            <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-undertow</artifactId>-->
+            <!--</dependency>-->
+            <!--</dependencies>-->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <arguments>
+                                <argument>--spring.profiles.active=dev,fast</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.trecloux</groupId>
+                        <artifactId>yeoman-maven-plugin</artifactId>
+                        <version>0.4</version>
+                        <executions>
+                            <execution>
+                                <id>run-frontend-build</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                                <configuration>
+                                    <buildTool>grunt</buildTool>
+                                    <buildArgs>build --force --no-color</buildArgs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <yeomanProjectDirectory>${project.basedir}</yeomanProjectDirectory>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>src/main/webapp/dist</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>.tmp</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <arguments>
+                                <argument>--spring.profiles.active=prod</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <properties>
+                <!-- log configuration -->
+                <logback.loglevel>INFO</logback.loglevel>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- 设定插件仓库, 如有Nexus私服, 取消注释并指向正确的服务器地址. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://127.0.0.1:8082/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>nexus_snapshots</id>
+            <name>Team Nexus Snapshots Repository</name>
+            <url>http://127.0.0.1:8082/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <!--配置远程仓库，这个可以自己设定-->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>YNedut Release Repository</name>
+            <url>http://127.0.0.1:8082/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://127.0.0.1:8082/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

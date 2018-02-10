@@ -1,0 +1,29 @@
+<div class="login-form-min">
+    <div class="login-form-text">登录</div>
+    <div class="login-form-error-message" ng-bind="login_buttom_message"></div>
+    <div class="login-form-group">
+        <label class="login-form-lable">账号</label>
+        <div class="login-input-contair">
+            <input class="login-form-input" type="text" placeholder="账号" ng-model="login.username" required maxlength="20"/>
+        </div>
+    </div>
+    <div class="login-form-group">
+        <label class="login-form-lable">密码</label>
+        <div class="login-input-contair">
+            <input class="login-form-input" type="password" placeholder="密码" ng-model="login.password" required maxlength="10"/>
+        </div>
+    </div>
+    <div class="login-form-group">
+        <label class="login-form-lable"></label>
+        <div class="login-input-contair bg-transparent">
+            <input class="login-remberme" type="checkbox"/><lable class="remberme-lable">记住我</lable>
+        </div>
+    </div>
+    <div class="login-form-group">
+        <label class="login-form-lable"></label>
+        <div class="login-input-contair bg-transparent">
+            <input class="button" type="button" value="登录" ng-click="loginForm()"/>
+            <input class="button" type="button" value="取消" ng-click="canCel()"/>
+        </div>
+    </div>
+</div>

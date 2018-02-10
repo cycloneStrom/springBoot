@@ -1,0 +1,48 @@
+<div>
+    <!--头部 begin-->
+    <div class="header-nav">
+        <div class="header-nav-main">
+            <!--搜索栏-->
+            <div class="header-nav-main-search">
+                <input type="text" class="search-input" placeholder="选择查找" ng-model="mainSearch.info">
+                <a href="javascript:;" title="搜索" class="search-input-search" ng-click="search()">
+                    <img src="../../assets/images/search.png" class="search-input-image" width="20px" height="20px">
+                </a>
+            </div>
+            <div class="header-nav-main-position">
+                <div class="header-nav-right-info">
+                    <ul class="nav-ul">
+                        <li class="nav-ul-item"><a href="">首页</a></li>
+                        <li class="nav-ul-item"><a href="">兴趣</a></li>
+                        <li class="nav-ul-item"><a href="">阅读</a></li>
+                        <li class="nav-ul-item"><a href="">有感</a></li>
+                    </ul>
+                </div>
+                <div class="header-nav-right-info">
+                    <ul class="nav-ul">
+                        <li class="nav-ul-item">
+                            <div class="theme-color" id="theme-color" title="换肤">
+                                <ul class="theme-group">
+                                    <li class="theme-item smileStyle" date-type="smileStyle"></li>
+                                    <li class="theme-item myZoneStyle" date-type="myZoneStyle"></li>
+                                    <li class="theme-item myLivelyStyle" date-type="myLivelyStyle"></li>
+                                    <li class="theme-item myGrayStyle" date-type="myGrayStyle"></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-ul-item">
+                            <div class="theme-bg-image" title="切换背景">
+
+                            </div>
+                        </li>
+                        <li class="nav-ul-item">
+                            <div class="theme-exit-image" title="退出" ng-click="logOut()">
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

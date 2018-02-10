@@ -1,0 +1,44 @@
+
+/********窗体左边********/
+.main-nav-left {
+    background-color: #729698 !important;
+
+}
+/*上面发布消息的地方*/
+.main-info > .main-info-top {
+    background-color: #283018 !important;
+}
+
+/*刷新的信息统计，也有通知的味道*/
+.main-info .main-info-option {
+    background-color: #283018 !important;
+}
+/*显示消息*/
+.main-info .main-info-lists > .info-ele {
+    background-color: #283018 !important;
+}
+
+/*                                    消息体的样式                      */
+/*消息的头 用户头像 名字等等*/
+.main-info .main-info-lists > .info-ele > .msg-header {
+    background-color: #283018 !important;
+}
+
+/*                                    消息体的样式                      */
+/*****最右边*****/
+/*中间的右边样式*/
+.main-right {
+    background-color: #729698 !important;
+}
+/*上面部分，显示用户的名字，头像，还有一些说说 日志 照片等等信息*/
+.main-right > .main-right-top {
+    background-color: #283018 !important; /*最右边的条的背景配色管理*/
+}
+
+/*****最右边*****/
+/********************************************* 身体样式  bengin ******************************************************/
+
+/*如果没有消息显示的样式*/
+.empty-main{
+    background-color: #283018 !important;
+}

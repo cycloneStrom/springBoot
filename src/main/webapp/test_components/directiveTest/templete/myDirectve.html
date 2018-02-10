@@ -1,0 +1,20 @@
+<div class="nav">
+    <form name="myForm" novalidate class="form-actions">
+        <div class="form-group">
+            <label> 姓名 </label>
+            <input class="form-control input-group" type="text" my-validate="{name:'姓名'}" ng-model="myFormDate.name" ng-maxlength="20" required />
+        </div>
+        <div class="form-group">
+            <label> 电话号码 </label>
+            <input class="form-control input-group" type="text" my-validate="{name:'电话号码'}" ng-model="myFormDate.phone" ng-maxlength="20" required  />
+        </div>
+        <div class="form-group">
+            <label> 密码 </label>
+            <input class="form-control input-group" type="text" my-validate="{name:'密码'}" ng-model="myFormDate.password" ng-maxlength="20" required />
+        </div>
+        <div class="form-group">
+            <input type="button" class="btn btn-danger" value="提交" ng-click="submit(1)" />
+            <input type="button" class="btn btn-success" value="取消" ng-click="submit(2)" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+<div>
+    <!--左边菜单-->
+    <div class="main-nav-left">
+        <div class="left-top">
+            <div class="span-style">
+                <a href="javascript:;" ng-click="jumpToTarget('platform')">首页</a>
+            </div>
+            <div class="span-style">
+                <a href="javascript:;" ng-click="jumpToTarget('message')">消息</a>
+            </div>
+            <div class="span-style">
+                <a href="javascript:;" ng-click="jumpToTarget('favorite')">收藏</a>
+            </div>
+            <div class="span-style">
+                <a href="javascript:;" ng-click="jumpToTarget('enjoy')">赞</a>
+            </div>
+        </div>
+        <div class="left-center">
+            <hr/>
+        </div>
+        <div class="left-buttom">
+            <div class="my-menu-list"><div class="user"></div>好友动态</div>
+            <div class="my-menu-list"><div class="heart"></div>特别关心</div>
+            <div class="my-menu-list"><div class="forme"></div>与我相关</div>
+            <div class="my-menu-list"><div class="house"></div>我的收藏</div>
+            <div class="left-center">
+                <hr/>
+            </div>
+            <div class="my-min-menu">
+                <div class="menu-control" ng-repeat="item in leftMenuLists track by $index">
+                    <div class="menu-list-dot"></div><a href="javascript:;" ng-click="selectMsg(item)">{{item.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

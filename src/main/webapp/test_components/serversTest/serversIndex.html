@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap-responsive.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap-theme.css"/>
+    <script type="text/javascript" src="../../static/script/bootstrap/ui-bootstrap-csp.css"></script>
+</head>
+<body ng-controller="serversController">
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-horizontal">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">用户名</label>
+                        <div class="col-md-8">
+                            <input class="form-control input-medium" type="text" ng-model="username" my-validate="{'name':'用户名'}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">密码</label>
+                        <div class="col-md-8">
+                            <input class="form-control input-medium" type="text" ng-model="password" my-validate="{'name':'密码'}"  required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4"></label>
+                        <div class="col-md-8">
+                            <input class="btn btn-success" type="button" ng-click="login()" value="登录"    data-toggle="tooltip" data-placement="right" title="Tooltip on right"/>
+                            <input class="btn btn-danger" type="button" ng-click="cancelLogin()" value="取消"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+</body>
+<script type="text/javascript" src="../../static/script/angularjs/angular.js"></script>
+<script type="text/javascript" src="../../static/script/angularjs/angular-messages.js"></script>
+<script type="text/javascript" src="../../static/script/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../../static/script/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="../../static/script/angular-router/angular-route.js"></script>
+<script type="text/javascript" src="../../static/script/angular-cookies/angular-cookies.js"></script>
+<script type="text/javascript" src="../../static/script/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="../../static/script/bootstrap/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="../../static/script/js/myUtils.js"></script>
+<script type="text/javascript" src="../../static/script/js/myApp.js"></script>
+<script type="text/javascript" src="../../static/script/js/dataBaseServer.js"></script>
+<script type="text/javascript" src="../../static/script/js/myValidation.js"></script>
+<script type="text/javascript" src="js/serversController.js"></script>
+</html>

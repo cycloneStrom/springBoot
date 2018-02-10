@@ -1,0 +1,89 @@
+<div>
+    <!--消息   这儿才是循环的开始    这是一个消息包含的所有的信息  头像  名称  来源  消息体  菜单-->
+    <div class="main-info-lists" ng-repeat="item in shortMessages" ng-if="shortMessages.length > 0">
+        <!--消息体  开始-->
+        <div class="info-ele">
+            <!--消息体 用户的头像-->
+            <div class="msg-header">
+                <div class="msg-user-header">
+                    <a href="javascript:;" ng-click="consumerManageMain(item.platformSysUser.id)">
+                        <img ng-src="{{basePath}}/assets/images/index/msg-user-header.bmp">
+                        <img ng-show="user.headUrl"
+                             ng-src="{{basePath}}/fileManger/getUserHeadUrl?fastDFSId={{user.headUrl}}&userId={{user.id}}">
+                    </a>
+                </div>
+                <div class="msg-user-infom">
+                    <div class="msg-user-name" ng-click="consumerManageMain(item.platformSysUser.id)">
+                        <a class="" href="#">{{item.platformSysUser.name}}</a>
+                    </div>
+                    <div class="msg-time-source">
+                        {{item.publishDate}} 来自 {{item.publishTool}}
+                    </div>
+                </div>
+                <div class="msg-user-infom-delete">
+                    <a href="" ng-click="deleteInfo(item)">删除</a>
+                </div>
+            </div>
+            <!--消息体  内容-->
+            <div class="msg-body">
+                <div class="msg-body-info">
+                    {{item.messageInfo}}
+                </div>
+                <div class="msg-body-file">
+                    <img ng-src="{{basePath}}/fileManger/downStream?fastDFSId={{file.fileId}}" ng-repeat="file in item.fileId">
+                </div>
+            </div>
+            <!--消息体 消息菜单-->
+            <div class="msg-buttom">
+                <!--收藏-->
+                <div class="msg-other-mnue-lists">
+                    <div class="msg-other-mnue-lists-box">
+                        <a href="">
+                            <img ng-src="{{basePath}}/assets/images/index/msg-collection.png" alt="" width="20px"
+                                 height="20px"/>
+                            <span>收藏</span>
+                        </a>
+                    </div>
+                </div>
+                <!--查看-->
+                <div class="msg-other-mnue-lists">
+                    <div class="msg-other-mnue-lists-box">
+                        <a href="">
+                            <img ng-src="{{basePath}}/assets/images/index/msg-see.png" alt="" width="25px" height="25px"/>
+                            <span>{{item.enjoyCount}}</span>
+                        </a>
+                    </div>
+                </div>
+                <!--交流-->
+                <div class="msg-other-mnue-lists">
+                    <div class="msg-other-mnue-lists-box">
+                        <a href="">
+                            <img ng-src="{{basePath}}/assets/images/index/msg-conmmu.png" alt="" width="25px"
+                                 height="25px"/>
+                            <span>{{item.commentCount}}</span>
+                        </a>
+                    </div>
+                </div>
+                <!--赞-->
+                <div class="msg-other-mnue-lists">
+                    <div class="msg-other-mnue-lists-box">
+                        <a href="">
+                            <img ng-src="{{basePath}}/assets/images/index/msg-like.png" alt="" width="25px"
+                                 height="25px"/>
+                            <span>{{item.favorityCount}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--消息体  end-->
+    </div>
+    <div class="empty-main" ng-if="shortMessages.length == 0">
+        <div class="empty-img-div">
+            <div class="empty-images"></div>
+        </div>
+        <div class="empty-msg">哦豁，没有任何的东西哟~~</div>
+        <!--消息体  end-->
+    </div>
+    <!--消息   这儿才是循环的开始    这是一个消息包含的所有的信息  头像  名称  来源  消息体  菜单-->
+</div>

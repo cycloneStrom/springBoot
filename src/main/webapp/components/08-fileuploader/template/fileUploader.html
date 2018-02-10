@@ -1,0 +1,15 @@
+<div >
+    <div>
+        <div >
+            <div ng-if="options.defaultShow" class="file-uploader-contain file-item" ng-repeat="item in fastDfsIdList">
+                <a href="javascript:;" >
+                    <div  class="delete-icon"  title="删除" ng-click="deleteFile(item)"></div>
+                </a>
+                <img ng-src="../../fileManger/downStream?fastDFSId={{item}}" >
+            </div>
+        </div>
+        <a href="javascript:;" class="file-uploader-contain upload-bg" id="uploadContainer">
+
+        </a>
+    </div>
+</div>

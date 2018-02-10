@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="sshApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="../../../assets/style/tipso/css/tipso.css">
+    <link rel="stylesheet" href="../../../assets/style/csshake-master/dist/csshake.css">
+    <link rel="stylesheet" href="../../../browser_components/artDialog/css/ui-dialog.css">
+    <link rel="stylesheet" href="../../../assets/style/style-1.css">
+</head>
+<body ng-controller="notifyController">
+<!--左边菜单-->
+<div class="left-menu">
+    <div class="menu-item">
+        <div class="menu-name">
+            监控
+        </div>
+        <div class="menu-name">
+            配置
+        </div>
+    </div>
+</div>
+<!--main begin-->
+<div class="mian-nav">
+    <div class="main-center">
+        <div class="tab-box">
+           <button ng-click="notifyWarinng()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">notify-warinng</button>
+        </div>
+        <div class="tab-box">
+            <button ng-click="notifyError()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">notify-error</button>
+        </div>
+
+        <div class="tab-box">
+            <button ng-click="notifySucess()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">notify-sucess</button>
+        </div>
+
+        <div class="tab-box">
+            <button ng-click="confirmWarinng()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">confirm-warinng</button>
+        </div>
+        <div class="tab-box">
+            <button ng-click="confirmError()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">confirm-error</button>
+        </div>
+
+        <div class="tab-box">
+            <button ng-click="confirmSucess()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">confirm-sucess</button>
+        </div>
+
+        <div class="tab-box">
+            <button ng-click="loading()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;">loading-loading</button>
+        </div>
+
+
+        <div class="tab-box">
+            <button ng-click="sendName()" style="font-size: 20px;text-align: center;line-height: 30px;padding: 5px;" >sendName</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../../browser_components/require/require.js"></script>
+<script type="text/javascript" src="../../../browser_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="../../../browser_components/angular/angular.js"></script>
+<script type="text/javascript" src="../../../browser_components/angular-ui-router/angular-ui-router.js"></script>
+<script type="text/javascript" src="../../../browser_components/artDialog/dist/dialog.js"></script>
+<script type="text/javascript" src="../../../browser_components/sockjs/sockjs-0.3.min.js"></script>
+<script type="text/javascript" src="../../../browser_components/stomp/stomp.js"></script>
+
+<script type="text/javascript" src="../../../static/scripts/sshUtils.js"></script>
+<script type="text/javascript" src="../../../static/scripts/sshApp.js"></script>
+<script type="text/javascript" src="../../../assets/style/tipso/js/tipso.js"></script>
+<script type="text/javascript" src="../../../components/2-notification/Notification.js"></script>
+
+
+<script type="text/javascript" src="../../../pages/js/indexController.js"></script>
+<script type="text/javascript" src="../../../pages/exhibition/js/exhibitionController.js"></script>
+
+<script type="text/javascript" src="../../../components/2-notification/template/app.js"></script>
+<!--main end-->
+</body>
+</html>

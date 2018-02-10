@@ -1,0 +1,79 @@
+/*theme style*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #0088cc;
+}
+/*整个登录的框 居中显示*/
+.login-wrap{
+    /*width: 1000px;*/
+    /*height: 500px;*/
+    /*background-color: #ffff00;*/
+    /*position: fixed; *//*固定位置*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-top: -250px;*/
+    /*margin-left: -500px;*/
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+/*登录的表单的位置 居中显示*/
+.login-form{
+    width:450px;
+    height: 500px;
+    background-color: white;
+    padding: 20px;/*内边距*/
+    /*position: fixed;*/
+    /*left: 50%;*/
+    /*margin-left: -200px;*/
+    border-radius: 15px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+}
+
+/*提交的表单的样式*/
+.form-style{
+    text-align: center;
+    font-size: 35px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+/*登录的输入框*/
+.input-style {
+    width: 360px;
+    height: 85px;
+    background-color:#2F96B4;
+    padding: 5px;
+    margin-top: 30px;
+}
+.input-style span{
+    margin-right: 270px;
+    font-size: 20px;
+}
+
+.input-style input{
+    margin-right: -35px;
+    font-size: 18px;
+    width: 245px;
+    height: 35px;
+}
+/*记住我*/
+.rember-me{
+    width: 360px;
+    height: 40px;
+    background-color: #0000FF;
+    margin-top: 30px;
+}

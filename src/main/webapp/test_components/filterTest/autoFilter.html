@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>很好</title>
+    <style type="text/css">
+        * {
+            margin: 20px;;
+        }
+    </style>
+</head>
+<body ng-controller="myFilterController">
+<!--内置过滤器-->
+<h3> 1、转化为货币</h3>
+<h4> {{autoFilter.currecy | currency}}</h4>
+
+<h3> 2、转化为日期</h3>
+<h4> {{autoFilter.date.medium | date:'medium'}}</h4>
+<h4> {{autoFilter.date.short | date:'short'}}</h4>
+<h4> {{autoFilter.date.fullDate | date:'fullDate'}}</h4>
+<h4> {{autoFilter.date.longDate | date:'longDate'}}</h4>
+<h4> {{autoFilter.date.mediumDate | date:'mediumDate'}}</h4>
+<h4> {{autoFilter.date.shortDate | date:'shortDate'}}</h4>
+<h4> {{autoFilter.date.mediumTime | date:'mediumTime'}}</h4>
+<h4> {{autoFilter.date.shortTime | date:'shortTime'}}</h4>
+
+<h3> 3、过滤器 5个 字符串 含有a的</h3>
+<h6 ng-repeat="item in autoFilter.filter | filter:'a'">{{item}}</h6>
+
+<h3> 4、过滤器 5个对象 name含有a的</h3>
+<h6 ng-repeat="item in objectList| filter:{'name':'a'}">{{item}}</h6>
+
+<h3> 5、过滤器 传入的是函数filterFun</h3>
+<h6 ng-repeat="item in autoFilter.filter|filter:filterFun">{{item}}</h6>
+
+<h3> 6、过滤器JSon</h3>
+<h6>{{objectList|json}}</h6>
+
+
+<h3> 7、limitTo {{objectList.length}}条数据只显示3条显示的个数 </h3>
+<!--如果是后面3条 则是-3-->
+<h6 ng-repeat="item in objectList|limitTo:3">{{$index+1}} -- {{item.name}} -- {{item['like same']}}</h6>
+
+<div>
+    <h3>自定义过滤字符</h3>
+    <input ng-model="filterCh" type="text"/>
+
+    <h3 ng-repeat="item in autoFilter.filter | filter:$scope.filterCh">{{item}}</h3>
+</div>
+</body>
+<script type="text/javascript" src="../../static/script/angularjs/angular-1.3.0.js"></script>
+<script type="text/javascript" src="../../static/script/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../../static/script/js/myApp.js"></script>
+<script type="text/javascript" src="js/myFilter.js"></script>
+<script type="text/javascript" src="js/myFilterController.js"></script>
+</html>

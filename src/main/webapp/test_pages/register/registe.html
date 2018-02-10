@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            /*height: 100%;*/
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        /*纯居中的样式*/
+        .register-container {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -300px;
+            margin-left: -250px;
+        }
+
+        .register-main-info {
+            width: 500px;
+            float: left;
+            background-color: #F1F6FC;
+            box-shadow: 30px 30px 100px #d3d3d3;/*阴影*/
+            padding: 10px 5px 30px 5px;
+        }
+
+        .register-form {
+            width: 100%;
+            height: 100%;
+        }
+
+        .loginTxt {
+            margin: 40px 0 0 43px;
+            color: #4F6B21;
+            font-weight: normal;
+            text-align: center;
+            font-size: 26px;
+            line-height: 26px;
+            vertical-align: middle;
+            padding-top: 15px;
+        }
+
+        .register-area {
+            width: 330px;
+            float: left;
+            display: block;
+            margin: 10px 34px 0 45px;
+            padding-left: 60px;
+        }
+        /*区域*/
+        .register-area p {
+            margin: 1px 0 0 0;
+            height: 80px;
+            width: 330px;
+        }
+        /*顯示的名稱*/
+        .register-area p label {
+            font-size: 14px;
+            text-align: right;
+            color: #666;
+            padding: 0;
+        }
+        /*輸入框*/
+        .register-area p .login-area-input {
+            display: block;
+            line-height: 18px;
+            transition: all 0.30s ease-in-out;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            border: 1px solid #D2D9DC;
+            outline: none;
+            width: 310px;
+            margin: 8px 0;
+            border-radius: 0;
+            padding: 8px 0 8px 8px;
+            height: 36px;
+            background-color: #CCC;
+        }
+
+        /*显示的内容*/
+        .register-area p span {
+            display: none;
+            width: 290px;
+            line-height: 21px;
+            margin: 0 0 0 0;
+            padding: 0 0 0 8px;
+            font-size: 12px;
+            border-radius: 3px;
+            color: #c83100;
+            border: 1px solid #fceec1;
+        }
+        /*悬浮样式*/
+        .register-area p .login-area-input:hover {
+            box-shadow: 0 0 0 5px rgba(247, 247, 250, .8);
+            border-radius: 0;
+            border: 1px solid #DADADA;
+        }
+        /*点击样式*/
+        .register-area p .login-area-input:focus {
+            box-shadow: 0 0 0 5px rgba(242, 248, 252, .8);
+            border-radius: 0;
+            border: 1px solid #B7D4EA;
+        }
+        .register-area .no_allow a {
+            font-size: 12px;
+            margin-left: 42px;
+        }
+
+        .loginSubmitBnt .theSubmitButton {
+            width: 105px;
+            height: 45px;
+            border: none;
+            cursor: pointer;
+            background: dodgerblue none;
+            font-size: 16px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<!--main begin-->
+<div class="register-container">
+    <!--信息-->
+
+    <div class="register-main-info">
+        <div class="register-form">
+            <div class="loginTxt">注册账号</div>
+            <form id="leftForm">
+                <div class="register-area" id="loginBox">
+                    <p style="position: relative;">
+                        <label for="LoginForm_email">用户名：</label>
+                        <input placeholder="请输入您的用户名"  class="login-area-input"  name="LoginForm[email]" id="LoginForm_email" type="text" maxlength="255">
+                        <span>请输入您的用户名</span>
+                    </p>
+
+                    <p style="position: relative;">
+                        <label for="LoginForm_password">密码：</label>
+                        <input placeholder="请输入您的密码" class="login-area-input"  name="LoginForm[password]" id="LoginForm_password" type="password" maxlength="16">
+                        <span>请输入您的密码</span>
+                    </p>
+
+                    <p style="position: relative;">
+                        <label for="LoginForm_checksum">邀请码：</label>
+                        <input placeholder="请输入您的邀请码" class="login-area-input"  name="LoginForm[checksum]" id="LoginForm_checksum" type="text" value="">
+                        <span>请输入您的邀请码</span>
+                    </p>
+
+                    <p style="position: relative;">
+                        <label for="LoginForm_checksum">性别：</label>
+                        <input  id="LoginForm_sex_1" style="margin-left: 20px" type="radio" name="LoginForm_sex" value=""><label>俊男</label>
+                        <input  id="LoginForm_sex_0" style="margin-left: 20px" type="radio" name="LoginForm_sex" value=""><label>靓女</label>
+                    </p>
+
+                    <div class="loginSubmitBnt">
+                        <div class="reg_submit">
+                            <input name="userSubmit" class="theSubmitButton" value="注册" type="submit">
+                            <input name="userSubmit" class="theSubmitButton" value="登录" type="submit">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--用户的信息-->
+</div>
+<!--main end-->
+</body>
+</html>

@@ -1,0 +1,88 @@
+* {
+    font-size: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.file-uploader-container {
+    border: solid 1px #eaeaea;
+    padding: 5px;
+}
+
+.file-uploader-div {
+    padding: 5px;
+    border: 1px solid #eaeaea;
+}
+
+/*文件的名字*/
+.file-uploader-name-span {
+    line-height: 15px;
+    margin: 0 5px 0 5px;
+}
+
+/*进度条*/
+.file-uploader-progressbar {
+    height: 15px;
+    width: 100px;
+    display: inline-block;
+    overflow: inherit;
+    margin: 0 5px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+/*进度条的值*/
+.file-uploader-progressbar-value {
+    display: block;
+    width: 54%;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 10px;
+    margin: 0;
+}
+
+/*上传的时间*/
+.file-uploader-time {
+    margin: 0 5px;
+}
+
+.ui-progressbar-value {
+    margin: 0;
+}
+
+/*替换input[type='file'] 主要是张得太丑了*/
+.file-uploader-input-div {
+    position: relative; /*相对定位*/
+    top: 0;
+    left: 0;
+    width: 78px;
+    height: 30px;
+    overflow: hidden;
+    bottom: auto;
+    right: auto;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #17a099;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+/*上传文件的样式*/
+.file-uploader-file-input {
+    top: 0;
+    left: 0;
+    width: 78px;
+    height: 30px;
+    overflow: hidden;
+    bottom: auto;
+    right: auto;
+    position: absolute; /*绝对定位，上级*/
+    filter: alpha(opacity=0); /*IE滤镜，透明度0% 完全透明*/
+    -moz-opacity: 0; /*Firefox私有，透明度0% 完全透明*/
+    opacity: 0; /*其他，透明度0% 完全透明*/
+}

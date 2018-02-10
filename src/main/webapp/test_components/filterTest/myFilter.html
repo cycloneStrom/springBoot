@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>很好</title>
+    <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap-responsive.css"/>
+</head>
+<body ng-controller="myFilterController" class="container">
+<form name="userForm" novalidate>
+    <div class="form-group" ng-class="{'has-error':userForm.name.$touched && userForm.name.$invalid}">
+        <label>用户名</label>
+        <input type="text" name="name" class="form-control"
+               ng-model="main.name"
+               ng-minlength="5"
+               ng-maxlength="10" required/>
+
+        <div class="help-block" ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+            <p ng-message="minlength">用户名最小长度5</p>
+
+            <p ng-message="maxlength">用户名最大长度10</p>
+
+            <p ng-message="required">用户名必填</p>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error':userForm.email.$touched && userForm.email.$invalid}">
+        <label>邮箱</label>
+        <input type="email" name="email" class="form-control"
+               ng-model="main.email"
+               ng-minlength="5"
+               ng-maxlength="20" required/>
+
+        <div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+            <div ng-messages-include="emailmessages.html"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">提交</button>
+    </div>
+    <pre>{{userForm.name.$error}}</pre>
+    <pre>{{userForm.email.$error}}</pre>
+</form>
+</body>
+<script type="text/javascript" src="../../static/script/angularjs/angular-1.3.0.js"></script>
+<script type="text/javascript" src="../../static/script/angularjs/angular-messages.js"></script>
+<script type="text/javascript" src="../../static/script/jquery/jquery-2.1.1.js"></script>
+<script type="javascript" src="../../static/script/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="../../static/script/js/myApp.js"></script>
+<script type="text/javascript" src="js/myFilter.js"></script>
+<script type="text/javascript" src="js/myFilterController.js"></script>
+</html>

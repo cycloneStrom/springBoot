@@ -1,0 +1,68 @@
+<div class="user-wrapper" ng-controller="editInfoController">
+    <div>
+        <div class="float-left">
+            <div>
+                <!--图片-->
+                <div class="user-header">
+                    <img ng-src="{{basePath}}/fileManger/getUserHeadUrl?fastDFSId={{platformSysUserVO.headUrl}}&userId={{userId}}" ng-if="platformSysUserVO.headUrl && !uploader">
+                    <div ng-if="!platformSysUserVO.headUrl || uploader">
+                        <file-uploader config="config"></file-uploader>
+                    </div>
+                </div>
+                <!--上传操作-->
+                <div>
+                    <input type="button" class="uploader-file-input" value="上傳頭像" ng-click="uploaderFile()">
+                </div>
+            </div>
+        </div>
+        <div class="float-left empty-box"></div>
+        <div class="float-left">
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label>姓名</label>
+                    <div class="user-info-input">
+                        <input class="input-box" type="text" ng-model="platformSysUserVO.name">
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label>性别</label>
+                    <div class="user-info-input">
+                        <input type="radio" name="gender" value="1" ng-model="platformSysUserVO.gender"> 男
+                        <input type="radio" name="gender" value="2" ng-model="platformSysUserVO.gender"> 女
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label>用户身份证号</label>
+                    <div class="user-info-input">
+                        <input class="input-box" type="text" ng-model="platformSysUserVO.number">
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label> 昵称</label>
+                    <div class="user-info-input">
+                        <input class="input-box" type="text" ng-model="platformSysUserVO.alien">
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label>用户邮箱</label>
+                    <div class="user-info-input">
+                        <input class="input-box" type="text" ng-model="platformSysUserVO.email">
+                    </div>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-info-item">
+                    <label><input class="user-info-button" type="button" value="完成修改" ng-click="saveUserBaseInfo()"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

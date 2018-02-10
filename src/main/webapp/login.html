@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>myApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="assets/style/login.css"/>
+</head>
+<body ng-controller="loginController">
+<!--容器，居中显示-->
+<!--http://localhost:8088/myApp/platform/login-->
+<!--SIGN UP-->
+<div class="login-wrap">
+    <div class="login-form">
+        <div class="login-form-text">登录</div>
+        <div class="login-form-error-message" ng-bind="login_buttom_message"></div>
+        <div class="login-form-group">
+            <label class="login-form-lable">账号</label>
+            <div class="login-input-contair">
+                <input class="login-form-input" type="text" placeholder="账号" ng-model="login.username" required maxlength="20"/>
+            </div>
+        </div>
+        <div class="login-form-group">
+            <label class="login-form-lable">密码</label>
+            <div class="login-input-contair">
+                <input class="login-form-input" type="password" placeholder="密码" ng-model="login.password" required maxlength="10"/>
+            </div>
+        </div>
+        <div class="login-form-group">
+            <label class="login-form-lable"></label>
+            <div class="login-input-contair bg-transparent">
+                <input class="login-remberme" type="checkbox"/><lable class="remberme-lable">记住我</lable>
+            </div>
+        </div>
+        <div class="login-form-group">
+            <label class="login-form-lable"></label>
+            <div class="login-input-contair bg-transparent">
+                <input class="button" type="button" value="登录" ng-click="loginForm()"/>
+                <input class="button" type="button" value="注册" ng-click="Registe()"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
+<script type="text/javascript" src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script type="text/javascript" src="static/style/bootstrap-modal/js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="static/style/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
+<script type="text/javascript" src="static/style/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="bower_components/socktjs/sockjs.js"></script>
+
+<script type="text/javascript" src="static/scripts/myApp.js"></script>
+<script type="text/javascript" src="static/scripts/myUtils.js"></script>
+<script type="text/javascript" src="static/scripts/basePath.js"></script>
+<script type="text/javascript" src="pages/platform/login/js/loginController.js"></script>

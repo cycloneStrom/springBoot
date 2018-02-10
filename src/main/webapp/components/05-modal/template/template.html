@@ -1,0 +1,30 @@
+<div class="tab-box">
+    <table class="mytable" cellpadding="0" cellspacing="0" id="addServiceAddBox">
+        <caption> 服务管理</caption>
+        <tr>
+            <td class="text">名称</td>
+            <td class="item-input"><input type="text" ng-model="newItem.name"/></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text">监控地址</td>
+            <td class="item-input"><input type="text" ng-model="newItem.host"/></td>
+            <td class="text">端口号</td>
+            <td class="item-input"><input type="text" ng-model="newItem.port"/></td>
+        </tr>
+        <tr>
+            <td class="text">监控命令</td>
+            <td colspan="3" class="item-textarea"><textarea cols="40" rows="2" ng-model="newItem.controlCommand"></textarea></td>
+        </tr>
+
+        <tr>
+            <td class="text">启动命令</td>
+            <td colspan="3" class="item-textarea"><textarea cols="40" rows="2" ng-model="newItem.startCommand"></textarea></td>
+        </tr>
+        <tr>
+            <td class="text">正则表达式</td>
+            <td colspan="3" class="item-textarea"><textarea cols="40" rows="2" ng-model="newItem.regExp" s-validation></textarea></td>
+        </tr>
+    </table>
+</div>
